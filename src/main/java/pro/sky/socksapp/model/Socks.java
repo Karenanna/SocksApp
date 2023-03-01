@@ -25,8 +25,6 @@ public class Socks {
     @Min(1)
     private int quantity;
 
-    public Socks(Color color, SocksSize socksSize, int cottonPercent, int quantity) {
-    }
 
     @Override
     public boolean equals(Object o) {

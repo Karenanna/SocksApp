@@ -21,14 +21,15 @@ public class   SocksFileServiceImpl implements SocksService {
         validate(socks);
         if (socksMap.containsValue(socks)) {
             for (Map.Entry<Long, Socks> entry : socksMap.entrySet()) {
-                long id = entry.getKey();
-                int oldQuantity = entry.getValue().getQuantity();
-                int newQuantity = oldQuantity + socks.getQuantity();
-                Socks socks1 = new Socks(socks.getColor(), socks.getSize(), socks.getCottonPercent(),
-                        newQuantity);
-                socksMap.put(id, socks1);
-                return id;
-
+                if (entry.getValue().equals(socks)) {
+                    long id = entry.getKey();
+                    int oldQuantity = entry.getValue().getQuantity();
+                    int newQuantity = oldQuantity + socks.getQuantity();
+                    Socks socks1 = new Socks(socks.getColor(), socks.getSize(), socks.getCottonPercent(),
+                            newQuantity);
+                    socksMap.put(id, socks1);
+                    return id;
+                }
             }
         } else {
             socksMap.put(id, socks);
